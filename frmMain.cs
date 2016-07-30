@@ -15,16 +15,9 @@ namespace BEXU
             dataGrid.DataSource = sp.FileItemList;
         }
 
-        private void btnLogIn_Click(object sender, EventArgs e)
+        private void btnClearList_Click(object sender, EventArgs e)
         {
-            try
-            {
-                sp.Login(txtURL.Text, txtUserName.Text, txtPassword.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            sp.FileItemList.Clear();
         }
 
         private async void btnSearch_Click(object sender, EventArgs e)
@@ -38,6 +31,8 @@ namespace BEXU
                 await sp.readWebs();
 
                 progressBar.Style = ProgressBarStyle.Blocks;
+                MessageBox.Show("Search completed.");
+                btnSearch.Text = "Search";
             }
             else
             {
@@ -47,9 +42,16 @@ namespace BEXU
             }
         }
 
-        private void btnClearList_Click(object sender, EventArgs e)
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
-            sp.FileItemList.Clear();
+            try
+            {
+                sp.Login(txtURL.Text, txtUserName.Text, txtPassword.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
