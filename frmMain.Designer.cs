@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.tabSearch = new System.Windows.Forms.TabPage();
+            this.txtSearchOverResult = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.colFolderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +53,8 @@
             this.txtFolderLike = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.lblFilterLabel = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tabLogin.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -69,7 +73,7 @@
             this.tabs.Location = new System.Drawing.Point(12, 12);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(586, 429);
+            this.tabs.Size = new System.Drawing.Size(782, 429);
             this.tabs.TabIndex = 0;
             // 
             // tabLogin
@@ -78,7 +82,7 @@
             this.tabLogin.Location = new System.Drawing.Point(4, 22);
             this.tabLogin.Name = "tabLogin";
             this.tabLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLogin.Size = new System.Drawing.Size(578, 403);
+            this.tabLogin.Size = new System.Drawing.Size(774, 403);
             this.tabLogin.TabIndex = 0;
             this.tabLogin.Text = "1. Login";
             this.tabLogin.UseVisualStyleBackColor = true;
@@ -124,7 +128,7 @@
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(546, 20);
             this.txtURL.TabIndex = 8;
-            this.txtURL.Text = "http://sharepoint.capsonic.com/MANU/AERO/GDR";
+            this.txtURL.Text = "http://sharepoint.capsonic.com/ISIT/IQST";
             // 
             // txtUserName
             // 
@@ -163,6 +167,9 @@
             // 
             // tabSearch
             // 
+            this.tabSearch.Controls.Add(this.lblFilterLabel);
+            this.tabSearch.Controls.Add(this.txtSearchOverResult);
+            this.tabSearch.Controls.Add(this.label5);
             this.tabSearch.Controls.Add(this.panel2);
             this.tabSearch.Controls.Add(this.btnClearList);
             this.tabSearch.Controls.Add(this.progressBar);
@@ -174,10 +181,27 @@
             this.tabSearch.Location = new System.Drawing.Point(4, 22);
             this.tabSearch.Name = "tabSearch";
             this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSearch.Size = new System.Drawing.Size(578, 403);
+            this.tabSearch.Size = new System.Drawing.Size(774, 403);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "2. Search";
             this.tabSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchOverResult
+            // 
+            this.txtSearchOverResult.Location = new System.Drawing.Point(523, 68);
+            this.txtSearchOverResult.Name = "txtSearchOverResult";
+            this.txtSearchOverResult.Size = new System.Drawing.Size(245, 20);
+            this.txtSearchOverResult.TabIndex = 27;
+            this.txtSearchOverResult.TextChanged += new System.EventHandler(this.txtSearchOverResult_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(520, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Search over result";
             // 
             // panel2
             // 
@@ -187,7 +211,7 @@
             this.panel2.Controls.Add(this.dataGrid);
             this.panel2.Location = new System.Drawing.Point(9, 123);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(563, 274);
+            this.panel2.Size = new System.Drawing.Size(759, 274);
             this.panel2.TabIndex = 25;
             // 
             // dataGrid
@@ -203,7 +227,7 @@
             this.dataGrid.Location = new System.Drawing.Point(0, 0);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(563, 274);
+            this.dataGrid.Size = new System.Drawing.Size(759, 274);
             this.dataGrid.TabIndex = 0;
             // 
             // colFolderName
@@ -232,7 +256,8 @@
             // 
             // btnClearList
             // 
-            this.btnClearList.Location = new System.Drawing.Point(188, 94);
+            this.btnClearList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearList.Location = new System.Drawing.Point(687, 94);
             this.btnClearList.Name = "btnClearList";
             this.btnClearList.Size = new System.Drawing.Size(81, 23);
             this.btnClearList.TabIndex = 24;
@@ -262,14 +287,14 @@
             // 
             this.txtFileLike.Location = new System.Drawing.Point(9, 68);
             this.txtFileLike.Name = "txtFileLike";
-            this.txtFileLike.Size = new System.Drawing.Size(173, 20);
+            this.txtFileLike.Size = new System.Drawing.Size(245, 20);
             this.txtFileLike.TabIndex = 20;
             // 
             // txtFolderLike
             // 
             this.txtFolderLike.Location = new System.Drawing.Point(9, 29);
             this.txtFolderLike.Name = "txtFolderLike";
-            this.txtFolderLike.Size = new System.Drawing.Size(173, 20);
+            this.txtFolderLike.Size = new System.Drawing.Size(245, 20);
             this.txtFolderLike.TabIndex = 21;
             this.txtFolderLike.Text = "Traveler";
             // 
@@ -291,11 +316,21 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Folder Like";
             // 
+            // lblFilterLabel
+            // 
+            this.lblFilterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFilterLabel.Location = new System.Drawing.Point(416, 96);
+            this.lblFilterLabel.Name = "lblFilterLabel";
+            this.lblFilterLabel.Size = new System.Drawing.Size(265, 18);
+            this.lblFilterLabel.TabIndex = 28;
+            this.lblFilterLabel.Text = "Showing 0 entries from 0";
+            this.lblFilterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 453);
+            this.ClientSize = new System.Drawing.Size(806, 453);
             this.Controls.Add(this.tabs);
             this.Name = "frmMain";
             this.Text = "Bulk Excel Updates";
@@ -336,6 +371,10 @@
         private System.Windows.Forms.TextBox txtFolderLike;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSearchOverResult;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
+        private System.Windows.Forms.Label lblFilterLabel;
     }
 }
 
