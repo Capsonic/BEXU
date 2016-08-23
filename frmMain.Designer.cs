@@ -39,10 +39,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.tabSearch = new System.Windows.Forms.TabPage();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.lblFilterLabelSearch = new System.Windows.Forms.Label();
             this.txtSearchOverResult = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.colIsSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colFolderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,14 +56,34 @@
             this.txtFolderLike = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabSelection = new System.Windows.Forms.TabPage();
+            this.btnProcess = new System.Windows.Forms.Button();
+            this.lblFilterLabelSelection = new System.Windows.Forms.Label();
+            this.txtSearchOverResultSelection = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridSelection = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClearListSelection = new System.Windows.Forms.Button();
+            this.progressBarSelection = new System.Windows.Forms.ProgressBar();
+            this.btnSearchSelection = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.lblFilterLabel = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tabLogin.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabSearch.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            this.tabSelection.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelection)).BeginInit();
             this.SuspendLayout();
             // 
             // tabs
@@ -70,10 +93,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabs.Controls.Add(this.tabLogin);
             this.tabs.Controls.Add(this.tabSearch);
+            this.tabs.Controls.Add(this.tabSelection);
             this.tabs.Location = new System.Drawing.Point(12, 12);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(782, 429);
+            this.tabs.Size = new System.Drawing.Size(782, 427);
             this.tabs.TabIndex = 0;
             // 
             // tabLogin
@@ -82,7 +106,7 @@
             this.tabLogin.Location = new System.Drawing.Point(4, 22);
             this.tabLogin.Name = "tabLogin";
             this.tabLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLogin.Size = new System.Drawing.Size(774, 403);
+            this.tabLogin.Size = new System.Drawing.Size(774, 401);
             this.tabLogin.TabIndex = 0;
             this.tabLogin.Text = "1. Login";
             this.tabLogin.UseVisualStyleBackColor = true;
@@ -96,7 +120,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblName);
-            this.panel1.Location = new System.Drawing.Point(-3, -13);
+            this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(585, 194);
             this.panel1.TabIndex = 4;
@@ -167,7 +191,8 @@
             // 
             // tabSearch
             // 
-            this.tabSearch.Controls.Add(this.lblFilterLabel);
+            this.tabSearch.Controls.Add(this.btnSelect);
+            this.tabSearch.Controls.Add(this.lblFilterLabelSearch);
             this.tabSearch.Controls.Add(this.txtSearchOverResult);
             this.tabSearch.Controls.Add(this.label5);
             this.tabSearch.Controls.Add(this.panel2);
@@ -181,13 +206,35 @@
             this.tabSearch.Location = new System.Drawing.Point(4, 22);
             this.tabSearch.Name = "tabSearch";
             this.tabSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSearch.Size = new System.Drawing.Size(774, 403);
+            this.tabSearch.Size = new System.Drawing.Size(774, 401);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "2. Search";
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelect.Location = new System.Drawing.Point(687, 372);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(81, 23);
+            this.btnSelect.TabIndex = 30;
+            this.btnSelect.Text = "Select";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // lblFilterLabelSearch
+            // 
+            this.lblFilterLabelSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFilterLabelSearch.Location = new System.Drawing.Point(484, 96);
+            this.lblFilterLabelSearch.Name = "lblFilterLabelSearch";
+            this.lblFilterLabelSearch.Size = new System.Drawing.Size(197, 18);
+            this.lblFilterLabelSearch.TabIndex = 28;
+            this.lblFilterLabelSearch.Text = "Showing 0 entries from 0";
+            this.lblFilterLabelSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtSearchOverResult
             // 
+            this.txtSearchOverResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchOverResult.Location = new System.Drawing.Point(523, 68);
             this.txtSearchOverResult.Name = "txtSearchOverResult";
             this.txtSearchOverResult.Size = new System.Drawing.Size(245, 20);
@@ -196,6 +243,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(520, 52);
             this.label5.Name = "label5";
@@ -211,7 +259,7 @@
             this.panel2.Controls.Add(this.dataGrid);
             this.panel2.Location = new System.Drawing.Point(9, 123);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(759, 274);
+            this.panel2.Size = new System.Drawing.Size(759, 243);
             this.panel2.TabIndex = 25;
             // 
             // dataGrid
@@ -220,15 +268,24 @@
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIsSelected,
             this.colFolderName,
             this.colFileName,
             this.colStatus});
             this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGrid.Location = new System.Drawing.Point(0, 0);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(759, 274);
+            this.dataGrid.RowHeadersVisible = false;
+            this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGrid.Size = new System.Drawing.Size(759, 243);
             this.dataGrid.TabIndex = 0;
+            // 
+            // colIsSelected
+            // 
+            this.colIsSelected.DataPropertyName = "IsSelected";
+            this.colIsSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colIsSelected.HeaderText = "Select";
+            this.colIsSelected.Name = "colIsSelected";
             // 
             // colFolderName
             // 
@@ -257,13 +314,13 @@
             // btnClearList
             // 
             this.btnClearList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearList.Location = new System.Drawing.Point(687, 94);
+            this.btnClearList.Location = new System.Drawing.Point(687, 93);
             this.btnClearList.Name = "btnClearList";
             this.btnClearList.Size = new System.Drawing.Size(81, 23);
             this.btnClearList.TabIndex = 24;
-            this.btnClearList.Text = "Clear";
+            this.btnClearList.Text = "Reset";
             this.btnClearList.UseVisualStyleBackColor = true;
-            this.btnClearList.Click += new System.EventHandler(this.btnClearList_Click);
+            this.btnClearList.Click += new System.EventHandler(this.btnClearListSearch_Click);
             // 
             // progressBar
             // 
@@ -316,21 +373,195 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Folder Like";
             // 
-            // lblFilterLabel
+            // tabSelection
             // 
-            this.lblFilterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFilterLabel.Location = new System.Drawing.Point(416, 96);
-            this.lblFilterLabel.Name = "lblFilterLabel";
-            this.lblFilterLabel.Size = new System.Drawing.Size(265, 18);
-            this.lblFilterLabel.TabIndex = 28;
-            this.lblFilterLabel.Text = "Showing 0 entries from 0";
-            this.lblFilterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tabSelection.Controls.Add(this.btnProcess);
+            this.tabSelection.Controls.Add(this.lblFilterLabelSelection);
+            this.tabSelection.Controls.Add(this.txtSearchOverResultSelection);
+            this.tabSelection.Controls.Add(this.label7);
+            this.tabSelection.Controls.Add(this.panel3);
+            this.tabSelection.Controls.Add(this.btnClearListSelection);
+            this.tabSelection.Controls.Add(this.progressBarSelection);
+            this.tabSelection.Controls.Add(this.btnSearchSelection);
+            this.tabSelection.Controls.Add(this.textBox2);
+            this.tabSelection.Controls.Add(this.textBox3);
+            this.tabSelection.Controls.Add(this.label8);
+            this.tabSelection.Controls.Add(this.label9);
+            this.tabSelection.Location = new System.Drawing.Point(4, 22);
+            this.tabSelection.Name = "tabSelection";
+            this.tabSelection.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSelection.Size = new System.Drawing.Size(774, 401);
+            this.tabSelection.TabIndex = 2;
+            this.tabSelection.Text = "3. Selection over content";
+            this.tabSelection.UseVisualStyleBackColor = true;
+            // 
+            // btnProcess
+            // 
+            this.btnProcess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnProcess.Location = new System.Drawing.Point(9, 372);
+            this.btnProcess.Name = "btnProcess";
+            this.btnProcess.Size = new System.Drawing.Size(81, 23);
+            this.btnProcess.TabIndex = 40;
+            this.btnProcess.Text = "Process";
+            this.btnProcess.UseVisualStyleBackColor = true;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
+            // 
+            // lblFilterLabelSelection
+            // 
+            this.lblFilterLabelSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFilterLabelSelection.Location = new System.Drawing.Point(463, 96);
+            this.lblFilterLabelSelection.Name = "lblFilterLabelSelection";
+            this.lblFilterLabelSelection.Size = new System.Drawing.Size(218, 18);
+            this.lblFilterLabelSelection.TabIndex = 39;
+            this.lblFilterLabelSelection.Text = "Showing 0 entries from 0";
+            this.lblFilterLabelSelection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtSearchOverResultSelection
+            // 
+            this.txtSearchOverResultSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchOverResultSelection.Location = new System.Drawing.Point(523, 68);
+            this.txtSearchOverResultSelection.Name = "txtSearchOverResultSelection";
+            this.txtSearchOverResultSelection.Size = new System.Drawing.Size(245, 20);
+            this.txtSearchOverResultSelection.TabIndex = 38;
+            this.txtSearchOverResultSelection.TextChanged += new System.EventHandler(this.txtSearchOverResultSelection_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(520, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 13);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "Search over result";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.dataGridSelection);
+            this.panel3.Location = new System.Drawing.Point(9, 123);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(759, 243);
+            this.panel3.TabIndex = 36;
+            // 
+            // dataGridSelection
+            // 
+            this.dataGridSelection.AllowUserToAddRows = false;
+            this.dataGridSelection.AllowUserToDeleteRows = false;
+            this.dataGridSelection.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSelection.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridSelection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridSelection.Location = new System.Drawing.Point(0, 0);
+            this.dataGridSelection.Name = "dataGridSelection";
+            this.dataGridSelection.RowHeadersVisible = false;
+            this.dataGridSelection.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridSelection.Size = new System.Drawing.Size(759, 243);
+            this.dataGridSelection.TabIndex = 0;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "IsSelected";
+            this.dataGridViewCheckBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Select";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "FolderName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Folder Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "FileName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "File Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Status";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Status";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // btnClearListSelection
+            // 
+            this.btnClearListSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearListSelection.Location = new System.Drawing.Point(687, 94);
+            this.btnClearListSelection.Name = "btnClearListSelection";
+            this.btnClearListSelection.Size = new System.Drawing.Size(81, 23);
+            this.btnClearListSelection.TabIndex = 35;
+            this.btnClearListSelection.Text = "Clear";
+            this.btnClearListSelection.UseVisualStyleBackColor = true;
+            this.btnClearListSelection.Click += new System.EventHandler(this.btnClearListSelection_Click);
+            // 
+            // progressBarSelection
+            // 
+            this.progressBarSelection.Location = new System.Drawing.Point(96, 94);
+            this.progressBarSelection.MarqueeAnimationSpeed = 1;
+            this.progressBarSelection.Name = "progressBarSelection";
+            this.progressBarSelection.Size = new System.Drawing.Size(86, 23);
+            this.progressBarSelection.TabIndex = 34;
+            // 
+            // btnSearchSelection
+            // 
+            this.btnSearchSelection.Location = new System.Drawing.Point(9, 94);
+            this.btnSearchSelection.Name = "btnSearchSelection";
+            this.btnSearchSelection.Size = new System.Drawing.Size(81, 23);
+            this.btnSearchSelection.TabIndex = 33;
+            this.btnSearchSelection.Text = "Search";
+            this.btnSearchSelection.UseVisualStyleBackColor = true;
+            this.btnSearchSelection.Click += new System.EventHandler(this.btnSearchSelection_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(9, 68);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(245, 20);
+            this.textBox2.TabIndex = 31;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(9, 29);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(245, 20);
+            this.textBox3.TabIndex = 32;
+            this.textBox3.Text = "Traveler";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 52);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "File Like";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 13);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Folder Like";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 453);
+            this.ClientSize = new System.Drawing.Size(806, 451);
             this.Controls.Add(this.tabs);
             this.Name = "frmMain";
             this.Text = "Bulk Excel Updates";
@@ -342,6 +573,10 @@
             this.tabSearch.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            this.tabSelection.ResumeLayout(false);
+            this.tabSelection.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelection)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -361,9 +596,6 @@
         private System.Windows.Forms.TabPage tabSearch;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFolderName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.Button btnClearList;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button btnSearch;
@@ -374,7 +606,30 @@
         private System.Windows.Forms.TextBox txtSearchOverResult;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
-        private System.Windows.Forms.Label lblFilterLabel;
+        private System.Windows.Forms.Label lblFilterLabelSearch;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colIsSelected;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFolderName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.TabPage tabSelection;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Label lblFilterLabelSelection;
+        private System.Windows.Forms.TextBox txtSearchOverResultSelection;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridSelection;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Button btnClearListSelection;
+        private System.Windows.Forms.ProgressBar progressBarSelection;
+        private System.Windows.Forms.Button btnSearchSelection;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnProcess;
     }
 }
 
