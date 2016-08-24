@@ -24,12 +24,24 @@ namespace BEXU
             _fileItemListSearch.ListChanged += _fileItemListSearch_ListChanged;
             #endregion
 
-            #region Tab Selection Ctrl
+            #region Tab Selection Ctor
             _fileItemListSelection = new BindingList<FileItem>();
             _bindingListViewSelection = new BindingListView<FileItem>(_fileItemListSelection);
             dataGridSelection.DataSource = _bindingListViewSelection;
             updateFilterLabelSelection();
             _fileItemListSelection.ListChanged += _fileItemListSelection_ListChanged;
+
+            _availableProcesses = new BindingList<IExcelUpdateProcess>();
+            _bindingListView_AvailableProcesses = new BindingListView<IExcelUpdateProcess>(_availableProcesses);
+            listAvailableProcesses.DataSource = _bindingListView_AvailableProcesses;
+
+            _processesToPerform = new BindingList<IExcelUpdateProcess>();
+            _bindingListView_ProcessesToPerform = new BindingListView<IExcelUpdateProcess>(_processesToPerform);
+            listProcessesToPerform.DataSource = _bindingListView_ProcessesToPerform;
+
+
+            _availableProcesses.Add(new frmCompareAndSetVersion());
+
             #endregion
         }
 
@@ -125,11 +137,13 @@ namespace BEXU
         private void btnSelect_Click(object sender, EventArgs e)
         {
             resetFileItemListSelection();
-            tabs.SelectedTab = tabSelection;
+            tabs.SelectedTab = tabProcess;
         }
         #endregion
 
-        #region Tab Selection
+        #region Tab Process
+
+        #region Datagrid
         private BindingList<FileItem> _fileItemListSelection;
         private BindingListView<FileItem> _bindingListViewSelection;
         private long _totalFileItemsSelection = 0;
@@ -161,41 +175,6 @@ namespace BEXU
             resetFileItemListSelection();
             updateFilterLabelSearch();
         }
-        private bool searchIsInterruptedSelection = false;
-        private void btnSearchSelection_Click(object sender, EventArgs e)
-        {
-            //if (btnSearchSelection.Text == "Search")
-            //{
-            //    try
-            //    {
-            //        btnSearchSelection.Text = "Stop";
-            //        searchIsInterruptedSelection = false;
-            //        _fileItemListSelection.Clear();
-
-            //        progressBarSelection.Style = ProgressBarStyle.Marquee;
-
-            //        //await _sp.readWebs(_fileItemListSearch, txtFolderLike.Text, txtFileLike.Text);
-
-            //        if (!searchIsInterruptedSelection)
-            //        {
-            //            progressBarSelection.Style = ProgressBarStyle.Blocks;
-            //            MessageBox.Show("Search completed.");
-            //            btnSearchSelection.Text = "Search";
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.ToString());
-            //    }
-            //}
-            //else
-            //{
-            //    btnSearchSelection.Text = "Search";
-            //    //_sp.ContinueSearching = false;
-            //    progressBarSelection.Style = ProgressBarStyle.Blocks;
-            //    searchIsInterruptedSelection = true;
-            //}
-        }
 
         private void txtSearchOverResultSelection_TextChanged(object sender, EventArgs e)
         {
@@ -206,6 +185,40 @@ namespace BEXU
             });
             updateFilterLabelSelection();
         }
+        #endregion
+
+        #region Processes
+        private BindingList<IExcelUpdateProcess> _availableProcesses;
+        private BindingListView<IExcelUpdateProcess> _bindingListView_AvailableProcesses;
+
+        private BindingList<IExcelUpdateProcess> _processesToPerform;
+        private BindingListView<IExcelUpdateProcess> _bindingListView_ProcessesToPerform;
+
+        private void btnAddProcessToPerform_Click(object sender, EventArgs e)
+        {
+            if (listAvailableProcesses.SelectedIndex > -1)
+            {
+                if (_availableProcesses.ElementAt(listAvailableProcesses.SelectedIndex).Configure())
+                {
+                    _processesToPerform.Add(_availableProcesses.ElementAt(listAvailableProcesses.SelectedIndex));
+                    _availableProcesses.RemoveAt(listAvailableProcesses.SelectedIndex);
+                }
+            }
+        }
+
+        private void btnRemoveProcessToPerform_Click(object sender, EventArgs e)
+        {
+            if (listProcessesToPerform.SelectedIndex > -1)
+            {
+                _availableProcesses.Add(_processesToPerform.ElementAt(listProcessesToPerform.SelectedIndex));
+                _processesToPerform.RemoveAt(listProcessesToPerform.SelectedIndex);
+            }
+        }
+
+        private void listProcessesToPerform_DoubleClick(object sender, EventArgs e)
+        {
+            _processesToPerform.ElementAt(listProcessesToPerform.SelectedIndex).Configure();
+        }
 
         #endregion
 
@@ -213,12 +226,31 @@ namespace BEXU
         {
             try
             {
-                _sp.Update(_fileItemListSelection);
+                if (_fileItemListSelection.Count > 0)
+                {
+                    if (_processesToPerform.Count > 0)
+                    {
+                        _sp.Process(_fileItemListSelection, _processesToPerform);
+                        dataGridSelection.Refresh();
+                        MessageBox.Show("Process completed.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No processes to perform.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No files to process.");
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        #endregion
     }
 }

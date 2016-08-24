@@ -56,10 +56,14 @@
             this.txtFolderLike = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.tabSelection = new System.Windows.Forms.TabPage();
+            this.tabProcess = new System.Windows.Forms.TabPage();
+            this.listProcessesToPerform = new System.Windows.Forms.ListBox();
+            this.listAvailableProcesses = new System.Windows.Forms.ListBox();
             this.btnProcess = new System.Windows.Forms.Button();
             this.lblFilterLabelSelection = new System.Windows.Forms.Label();
             this.txtSearchOverResultSelection = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridSelection = new System.Windows.Forms.DataGridView();
@@ -67,13 +71,9 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRemoveProcessToPerform = new System.Windows.Forms.Button();
+            this.btnAddProcessToPerform = new System.Windows.Forms.Button();
             this.btnClearListSelection = new System.Windows.Forms.Button();
-            this.progressBarSelection = new System.Windows.Forms.ProgressBar();
-            this.btnSearchSelection = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.tabs.SuspendLayout();
             this.tabLogin.SuspendLayout();
@@ -81,7 +81,7 @@
             this.tabSearch.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
-            this.tabSelection.SuspendLayout();
+            this.tabProcess.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSelection)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +93,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabs.Controls.Add(this.tabLogin);
             this.tabs.Controls.Add(this.tabSearch);
-            this.tabs.Controls.Add(this.tabSelection);
+            this.tabs.Controls.Add(this.tabProcess);
             this.tabs.Location = new System.Drawing.Point(12, 12);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
@@ -318,7 +318,7 @@
             this.btnClearList.Name = "btnClearList";
             this.btnClearList.Size = new System.Drawing.Size(81, 23);
             this.btnClearList.TabIndex = 24;
-            this.btnClearList.Text = "Reset";
+            this.btnClearList.Text = "Clear";
             this.btnClearList.UseVisualStyleBackColor = true;
             this.btnClearList.Click += new System.EventHandler(this.btnClearListSearch_Click);
             // 
@@ -373,27 +373,47 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Folder Like";
             // 
-            // tabSelection
+            // tabProcess
             // 
-            this.tabSelection.Controls.Add(this.btnProcess);
-            this.tabSelection.Controls.Add(this.lblFilterLabelSelection);
-            this.tabSelection.Controls.Add(this.txtSearchOverResultSelection);
-            this.tabSelection.Controls.Add(this.label7);
-            this.tabSelection.Controls.Add(this.panel3);
-            this.tabSelection.Controls.Add(this.btnClearListSelection);
-            this.tabSelection.Controls.Add(this.progressBarSelection);
-            this.tabSelection.Controls.Add(this.btnSearchSelection);
-            this.tabSelection.Controls.Add(this.textBox2);
-            this.tabSelection.Controls.Add(this.textBox3);
-            this.tabSelection.Controls.Add(this.label8);
-            this.tabSelection.Controls.Add(this.label9);
-            this.tabSelection.Location = new System.Drawing.Point(4, 22);
-            this.tabSelection.Name = "tabSelection";
-            this.tabSelection.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSelection.Size = new System.Drawing.Size(774, 401);
-            this.tabSelection.TabIndex = 2;
-            this.tabSelection.Text = "3. Selection over content";
-            this.tabSelection.UseVisualStyleBackColor = true;
+            this.tabProcess.Controls.Add(this.listProcessesToPerform);
+            this.tabProcess.Controls.Add(this.listAvailableProcesses);
+            this.tabProcess.Controls.Add(this.btnProcess);
+            this.tabProcess.Controls.Add(this.lblFilterLabelSelection);
+            this.tabProcess.Controls.Add(this.txtSearchOverResultSelection);
+            this.tabProcess.Controls.Add(this.label8);
+            this.tabProcess.Controls.Add(this.label6);
+            this.tabProcess.Controls.Add(this.label7);
+            this.tabProcess.Controls.Add(this.panel3);
+            this.tabProcess.Controls.Add(this.btnRemoveProcessToPerform);
+            this.tabProcess.Controls.Add(this.btnAddProcessToPerform);
+            this.tabProcess.Controls.Add(this.btnClearListSelection);
+            this.tabProcess.Location = new System.Drawing.Point(4, 22);
+            this.tabProcess.Name = "tabProcess";
+            this.tabProcess.Padding = new System.Windows.Forms.Padding(3);
+            this.tabProcess.Size = new System.Drawing.Size(774, 401);
+            this.tabProcess.TabIndex = 2;
+            this.tabProcess.Text = "3. Process";
+            this.tabProcess.UseVisualStyleBackColor = true;
+            // 
+            // listProcessesToPerform
+            // 
+            this.listProcessesToPerform.DisplayMember = "Title";
+            this.listProcessesToPerform.FormattingEnabled = true;
+            this.listProcessesToPerform.Location = new System.Drawing.Point(261, 19);
+            this.listProcessesToPerform.MultiColumn = true;
+            this.listProcessesToPerform.Name = "listProcessesToPerform";
+            this.listProcessesToPerform.Size = new System.Drawing.Size(203, 95);
+            this.listProcessesToPerform.TabIndex = 41;
+            this.listProcessesToPerform.DoubleClick += new System.EventHandler(this.listProcessesToPerform_DoubleClick);
+            // 
+            // listAvailableProcesses
+            // 
+            this.listAvailableProcesses.DisplayMember = "Title";
+            this.listAvailableProcesses.FormattingEnabled = true;
+            this.listAvailableProcesses.Location = new System.Drawing.Point(9, 19);
+            this.listAvailableProcesses.Name = "listAvailableProcesses";
+            this.listAvailableProcesses.Size = new System.Drawing.Size(203, 95);
+            this.listAvailableProcesses.TabIndex = 41;
             // 
             // btnProcess
             // 
@@ -424,6 +444,26 @@
             this.txtSearchOverResultSelection.Size = new System.Drawing.Size(245, 20);
             this.txtSearchOverResultSelection.TabIndex = 38;
             this.txtSearchOverResultSelection.TextChanged += new System.EventHandler(this.txtSearchOverResultSelection_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(258, 3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 13);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Processes To Perform";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 13);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "Available Processes";
             // 
             // label7
             // 
@@ -495,6 +535,26 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // btnRemoveProcessToPerform
+            // 
+            this.btnRemoveProcessToPerform.Location = new System.Drawing.Point(218, 71);
+            this.btnRemoveProcessToPerform.Name = "btnRemoveProcessToPerform";
+            this.btnRemoveProcessToPerform.Size = new System.Drawing.Size(37, 23);
+            this.btnRemoveProcessToPerform.TabIndex = 35;
+            this.btnRemoveProcessToPerform.Text = "<";
+            this.btnRemoveProcessToPerform.UseVisualStyleBackColor = true;
+            this.btnRemoveProcessToPerform.Click += new System.EventHandler(this.btnRemoveProcessToPerform_Click);
+            // 
+            // btnAddProcessToPerform
+            // 
+            this.btnAddProcessToPerform.Location = new System.Drawing.Point(218, 42);
+            this.btnAddProcessToPerform.Name = "btnAddProcessToPerform";
+            this.btnAddProcessToPerform.Size = new System.Drawing.Size(37, 23);
+            this.btnAddProcessToPerform.TabIndex = 35;
+            this.btnAddProcessToPerform.Text = ">";
+            this.btnAddProcessToPerform.UseVisualStyleBackColor = true;
+            this.btnAddProcessToPerform.Click += new System.EventHandler(this.btnAddProcessToPerform_Click);
+            // 
             // btnClearListSelection
             // 
             this.btnClearListSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -502,60 +562,9 @@
             this.btnClearListSelection.Name = "btnClearListSelection";
             this.btnClearListSelection.Size = new System.Drawing.Size(81, 23);
             this.btnClearListSelection.TabIndex = 35;
-            this.btnClearListSelection.Text = "Clear";
+            this.btnClearListSelection.Text = "Reset";
             this.btnClearListSelection.UseVisualStyleBackColor = true;
             this.btnClearListSelection.Click += new System.EventHandler(this.btnClearListSelection_Click);
-            // 
-            // progressBarSelection
-            // 
-            this.progressBarSelection.Location = new System.Drawing.Point(96, 94);
-            this.progressBarSelection.MarqueeAnimationSpeed = 1;
-            this.progressBarSelection.Name = "progressBarSelection";
-            this.progressBarSelection.Size = new System.Drawing.Size(86, 23);
-            this.progressBarSelection.TabIndex = 34;
-            // 
-            // btnSearchSelection
-            // 
-            this.btnSearchSelection.Location = new System.Drawing.Point(9, 94);
-            this.btnSearchSelection.Name = "btnSearchSelection";
-            this.btnSearchSelection.Size = new System.Drawing.Size(81, 23);
-            this.btnSearchSelection.TabIndex = 33;
-            this.btnSearchSelection.Text = "Search";
-            this.btnSearchSelection.UseVisualStyleBackColor = true;
-            this.btnSearchSelection.Click += new System.EventHandler(this.btnSearchSelection_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(9, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(245, 20);
-            this.textBox2.TabIndex = 31;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(9, 29);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(245, 20);
-            this.textBox3.TabIndex = 32;
-            this.textBox3.Text = "Traveler";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 52);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "File Like";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 13);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 13);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Folder Like";
             // 
             // frmMain
             // 
@@ -573,8 +582,8 @@
             this.tabSearch.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
-            this.tabSelection.ResumeLayout(false);
-            this.tabSelection.PerformLayout();
+            this.tabProcess.ResumeLayout(false);
+            this.tabProcess.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSelection)).EndInit();
             this.ResumeLayout(false);
@@ -611,7 +620,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFolderName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.TabPage tabSelection;
+        private System.Windows.Forms.TabPage tabProcess;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Label lblFilterLabelSelection;
         private System.Windows.Forms.TextBox txtSearchOverResultSelection;
@@ -623,13 +632,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button btnClearListSelection;
-        private System.Windows.Forms.ProgressBar progressBarSelection;
-        private System.Windows.Forms.Button btnSearchSelection;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnProcess;
+        private System.Windows.Forms.ListBox listProcessesToPerform;
+        private System.Windows.Forms.ListBox listAvailableProcesses;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnRemoveProcessToPerform;
+        private System.Windows.Forms.Button btnAddProcessToPerform;
     }
 }
 
